@@ -8,30 +8,69 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topbar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/newsreader"
+        android:layout_height="88dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Bookie" />
-    
+        app:title="Bookie"
+        android:background="@color/Neutral"
+        app:titleMarginStart="20dp"/>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/topbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/Neutral">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.06" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.94" />
+
+            <TextView
+                android:id="@+id/welcomeText1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/newsreader"
+                android:gravity="center"
+                android:text="A Collection of Tales"
+
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@id/guideStart"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/welcomeText2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/newsreader"
+                android:gravity="center"
+                android:text="stories worth remembering"
 
 
-        </LinearLayout>
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/guideStart"
+                app:layout_constraintTop_toBottomOf="@id/welcomeText1" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
