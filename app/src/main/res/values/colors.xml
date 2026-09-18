@@ -7,4 +7,6 @@
     <color name="Tertiary">#C87D20</color>
     <color name="Neutral">#F9F6F0</color>
     <color name="NeutralVariant">#ebe8e2</color>
+    <color name="category_text">#5D4A45</color>
+    <color name="category_outline">#8A3C1B</color>
 </resources>
