@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abhinav.bookie.R
@@ -49,8 +50,12 @@ class HomeFragment : Fragment() {
             )
         binding.categoryRecyclerView.adapter = categoryAdapter
 
-        val featuredBookAdapter = BookAdapter(bookRepo.getFeaturedBooks())
-        popularBookAdapter = PopularBookAdapter(bookRepo.getPopularBooks())
+        val featuredBookAdapter = BookAdapter(bookRepo.getFeaturedBooks()) { book ->
+            openBookDetails(book.id)
+        }
+        popularBookAdapter = PopularBookAdapter(bookRepo.getPopularBooks()) { book ->
+            openBookDetails(book.id)
+        }
 
         binding.featuredRecyclerView.layoutManager =
             LinearLayoutManager(
@@ -85,5 +90,12 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun openBookDetails(bookId: Int) {
+        findNavController().navigate(
+            R.id.action_homeFragment_to_bookDetailsFragment,
+            Bundle().apply { putInt("bookId", bookId) }
+        )
     }
 }

@@ -22,4 +22,8 @@ class BookRepo {
     fun getFeaturedBooks(): List<Book> {
         return MockBookData.books.filter { it.isFeatured }
     }
+
+    fun getFavoriteBooks(): List<Book> {
+        return MockBookData.books.filter { it.isFavorite }
+    }
 }

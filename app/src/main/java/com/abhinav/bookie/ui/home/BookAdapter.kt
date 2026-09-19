@@ -10,7 +10,8 @@ import com.abhinav.bookie.R
 import com.abhinav.bookie.data.Book
 
 class BookAdapter(
-    private var books: List<Book>
+    private var books: List<Book>,
+    private val onBookClick: (Book) -> Unit
 ) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,6 +34,9 @@ class BookAdapter(
         holder.bookTitleTextView.text = book.title
         holder.bookAuthorTextView.text = book.author
         holder.ratingTextView.text = book.rating.toString()
+        holder.itemView.setOnClickListener {
+            onBookClick(book)
+        }
     }
 
     override fun getItemCount(): Int {

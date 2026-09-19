@@ -10,7 +10,9 @@ import com.abhinav.bookie.R
 import com.abhinav.bookie.data.Book
 
 class PopularBookAdapter(
-    private var books: List<Book>
+    private var books: List<Book>,
+    private val onFavoriteChanged: ((Book) -> Unit)? = null,
+    private val onBookClick: (Book) -> Unit
 ) : RecyclerView.Adapter<PopularBookAdapter.PopularBookViewHolder>() {
 
     class PopularBookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,6 +40,9 @@ class PopularBookAdapter(
         holder.bookTitleTextView.text = book.title
         holder.bookAuthorTextView.text = book.author
         holder.pageCountTextView.text = "${book.pageCount} pages"
+        holder.itemView.setOnClickListener {
+            onBookClick(book)
+        }
 
         if (book.isFavorite) {
             holder.bookmarkImageView.setImageResource(R.drawable.ic_fav_selected)
@@ -47,7 +52,7 @@ class PopularBookAdapter(
 
         holder.bookmarkImageView.setOnClickListener {
             book.isFavorite = !book.isFavorite
-            notifyItemChanged(position)
+            onFavoriteChanged?.invoke(book) ?: notifyItemChanged(holder.bindingAdapterPosition)
         }
     }
 

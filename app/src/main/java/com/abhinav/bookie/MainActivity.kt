@@ -5,7 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.abhinav.bookie.ui.home.HomeFragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +20,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container_view, HomeFragment())
-            .commit()
-
-
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.fragment_container_view) as NavHostFragment
+        findViewById<BottomNavigationView>(R.id.bottom_navigation_bar)
+            .setupWithNavController(navHostFragment.navController)
     }
 }
