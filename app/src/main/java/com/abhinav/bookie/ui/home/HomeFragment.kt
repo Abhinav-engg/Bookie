@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -32,6 +33,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        updateThemeButton()
+        binding.lightModeButton.setOnClickListener {
+            val isDarkMode = resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+            AppCompatDelegate.setDefaultNightMode(
+                if (isDarkMode) AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES
+            )
+        }
 
         val categoryAdapter = CategoryAdapter(MockBookData.categories) { category ->
             val filteredBooks = if (category.name == "All") {
@@ -97,5 +107,18 @@ class HomeFragment : Fragment() {
             R.id.action_homeFragment_to_bookDetailsFragment,
             Bundle().apply { putInt("bookId", bookId) }
         )
+    }
+
+    private fun updateThemeButton() {
+        val isDarkMode = resources.configuration.uiMode and
+            Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+
+        if (isDarkMode) {
+            binding.lightModeButton.setImageResource(R.drawable.ic_night_mode)
+            binding.lightModeButton.contentDescription = getString(R.string.dark_mode)
+        } else {
+            binding.lightModeButton.setImageResource(R.drawable.ic_light_mode)
+            binding.lightModeButton.contentDescription = getString(R.string.light_mode)
+        }
     }
 }

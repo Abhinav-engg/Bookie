@@ -54,7 +54,8 @@
         app:layout_constraintTop_toTopOf="@id/topbar"
         app:layout_constraintStart_toEndOf="@id/toolbarTitle"
         android:scaleType="fitCenter"
-        android:background="@color/Neutral"/>
+        android:background="@color/Neutral"
+        app:tint="@color/black" />
 
 
 

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="Primary">#8A3C1B</color>
-    <color name="Secondary">#1B2A38</color>
-    <color name="Tertiary">#C87D20</color>
-    <color name="Neutral">#F9F6F0</color>
+    <color name="black">#FFF7F1ED</color>
+    <color name="white">#FF2A2421</color>
+    <color name="Primary">#F2B8A0</color>
+    <color name="Secondary">#B8C8D9</color>
+    <color name="Tertiary">#F3C97A</color>
+    <color name="Neutral">#FF1F1B19</color>
+    <color name="NeutralVariant">#FF302925</color>
+    <color name="category_text">#FFD8C5BC</color>
+    <color name="category_outline">#FFCFAE9F</color>
 </resources>
