@@ -5,10 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.abhinav.bookie.R
+import com.abhinav.bookie.data.Category
 import com.google.android.material.button.MaterialButton
 
 class CategoryAdapter(
-    private val categories: List<String>
+    private val categories: List<Category>,
+    private val onCategoryClick: (Category) -> Unit
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     private var selectedPosition = 0
@@ -35,7 +37,7 @@ class CategoryAdapter(
         position: Int
     ) {
         holder.categoryButton.apply {
-            text = categories[position]
+            text = categories[position].name
 
             if (position == selectedPosition) {
                 setTextColor(context.getColor(R.color.white))
@@ -46,7 +48,6 @@ class CategoryAdapter(
                 backgroundTintList = context.getColorStateList(R.color.Neutral)
                 strokeColor = context.getColorStateList(R.color.category_outline)
                 strokeWidth = 2
-                icon = null
             }
 
             setOnClickListener {
@@ -54,6 +55,7 @@ class CategoryAdapter(
                 selectedPosition = holder.bindingAdapterPosition
                 notifyItemChanged(oldPosition)
                 notifyItemChanged(selectedPosition)
+                onCategoryClick(categories[selectedPosition])
             }
         }
     }

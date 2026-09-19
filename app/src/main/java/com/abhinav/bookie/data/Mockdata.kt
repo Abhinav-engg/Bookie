@@ -163,7 +163,7 @@ object MockBookData {
             summary = "When a forgotten portrait is discovered in the back room of a provincial museum, historian Amara Bell begins tracing the life of its unnamed subject. Her search moves through auction records, letters, and the surviving archives of a painter whose work was dismissed during his lifetime. The woman in the portrait slowly emerges as a traveler, translator, and witness to an era that recorded powerful men while overlooking nearly everyone else. Portrait of a Stranger is a carefully researched biography about art, historical silence, and the determination required to recover a life from fragments.",
             reviewQuote = "A vivid rescue of a remarkable life from obscurity.",
             reviewSource = "The Arts Ledger",
-            isFeatured = false,
+            isFeatured = true,
             isFavorite = false
         ),
         Book(
