@@ -4,4 +4,5 @@
     <dimen name="card_corner_radius">10dp</dimen>
     <dimen name="card_padding">16dp</dimen>
     <dimen name="book_card_width">180dp</dimen>
+    <dimen name="popular_book_card_min_width">300dp</dimen>
 </resources>

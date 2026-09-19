@@ -15,5 +15,5 @@ data class Book(
     val reviewQuote: String,
     val reviewSource: String,
     val isFeatured: Boolean,
-    val isFavorite: Boolean,
+    var isFavorite: Boolean,
 )
